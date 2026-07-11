@@ -5,6 +5,7 @@ import {
   Home,
   Users,
   BookOpen,
+  FileText,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -27,6 +28,11 @@ const Sidebar = () => {
             path: "/users",
             icon: Users,
           },
+          {
+            name: "Files",
+            path: "/files",
+            icon: FileText,
+          },
         ]
       : []),
 
@@ -39,7 +45,6 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 h-screen bg-white shadow-sm border-r border-slate-200 p-5 flex flex-col">
-
       {/* Admin Title */}
       {isAdmin && (
         <h2 className="text-xl font-bold mb-6">Admin Panel</h2>
@@ -56,19 +61,18 @@ const Sidebar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`flex items-center gap-3 p-2 rounded font-bold transition ${
+              className={`flex items-center gap-3 p-3 rounded-lg font-semibold transition-all duration-200 ${
                 isActive
-                  ? "bg-emerald-500 text-white"
-                  : "hover:bg-emerald-100 text-gray-700"
+                  ? "bg-emerald-500 text-white shadow"
+                  : "text-gray-700 hover:bg-emerald-100"
               }`}
             >
-              <Icon size={18} />
+              <Icon size={20} />
               <span>{item.name}</span>
             </Link>
           );
         })}
       </nav>
-
     </div>
   );
 };

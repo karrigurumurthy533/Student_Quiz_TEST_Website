@@ -6,6 +6,8 @@ import Register from "./Pages/Register";
 import Dashboard from "./Pages/Dashboard";
 import Users from "./Pages/Users";
 import Tests from "./Pages/Tests";
+import Files from "./pages/Files";
+
 import Exam from "./Pages/Exam";
 
 import AppLayout from "./components/layout/AppLayout";
@@ -33,6 +35,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/users" element={<Users />} />
             <Route path="/tests" element={<Tests />} />
+            <Route path="/files" element={<Files />} />
 
             {/* ✅ FIXED ROUTE */}
             <Route path="/tests/:id" element={<Exam />} />
