@@ -1,11 +1,15 @@
 import handleAsyncError from "../middlewares/handleAsyncError.js";
-import  User  from "../models/userModel.js";
+import User from "../models/userModel.js";
 import HandleError from "../utils/handleError.js";
 import jwt from "jsonwebtoken";
 
-// 🔐 Verify User
 export const verifyUserAuth = handleAsyncError(async (req, res, next) => {
-  const { token } = req.cookies;
+  let token = req.cookies?.token;
+
+  // Authorization header support
+  if (!token && req.headers.authorization?.startsWith("Bearer ")) {
+    token = req.headers.authorization.split(" ")[1];
+  }
 
   if (!token) {
     return next(
