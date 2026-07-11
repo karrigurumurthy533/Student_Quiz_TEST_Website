@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { Plus, Trash, FileText } from "lucide-react";
-import {
-  createFile,
-  getAllFiles,
-  deleteFile,
-} from "../services/fileService";
+import { createFile, getAllFiles, deleteFile } from "../services/fileService";
 import { useAuth } from "../context/AuthContext";
 
 const Files = () => {
@@ -92,15 +88,16 @@ const Files = () => {
   };
 
   return (
-    <div className="p-6 bg-slate-50 min-h-screen">
+    <div className="p-6">
       {/* HEADER */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Files</h1>
 
         {user?.role !== "user" && (
           <button
+            type="button"
             onClick={() => setOpen(true)}
-            className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg shadow hover:bg-emerald-600"
+            className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600"
           >
             <Plus size={18} />
             Upload File
@@ -118,9 +115,7 @@ const Files = () => {
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
                 <FileText className="text-emerald-500" size={22} />
-                <h2 className="font-semibold text-lg">
-                  {file.title}
-                </h2>
+                <h2 className="font-semibold text-lg">{file.title}</h2>
               </div>
 
               {user?.role !== "user" && (
@@ -148,9 +143,7 @@ const Files = () => {
       {open && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
           <div className="bg-white w-[600px] rounded-xl shadow-xl border border-slate-200 p-6">
-            <h2 className="text-xl font-bold mb-5">
-              Upload File
-            </h2>
+            <h2 className="text-xl font-bold mb-5">Upload File</h2>
 
             <div className="space-y-4">
               <input
@@ -201,9 +194,7 @@ const Files = () => {
       {deleteId && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
           <div className="bg-white w-[400px] p-6 rounded-xl shadow-xl">
-            <h2 className="text-lg font-bold mb-3">
-              Confirm Delete
-            </h2>
+            <h2 className="text-lg font-bold mb-3">Confirm Delete</h2>
 
             <p className="text-sm text-slate-600 mb-5">
               Are you sure you want to delete this file?
