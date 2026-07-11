@@ -6,7 +6,7 @@ import Register from "./Pages/Register";
 import Dashboard from "./Pages/Dashboard";
 import Users from "./Pages/Users";
 import Tests from "./Pages/Tests";
-import Files from "./pages/Files";
+import Files from "./Pages/Files";
 
 import Exam from "./Pages/Exam";
 
