@@ -5,7 +5,7 @@ import { API_PATHS } from "../utils/apiPaths";
 export const createFile = async (formData) => {
     try {
         const response = await axiosInstance.post(
-            API_PATHS.FILES.CREATE_FILE,
+            API_PATHS.FILES.UPLOAD_FILE,
             formData,
             {
                 headers: {
