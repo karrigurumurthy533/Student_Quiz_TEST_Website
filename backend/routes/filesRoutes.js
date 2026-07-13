@@ -18,7 +18,10 @@ router.post(
   "/admin/file/upload",
   verifyUserAuth,
   roleBasedAccess("admin"),
-  upload.single("file"),
+  upload.fields([
+    { name: "file", maxCount: 1 },
+    { name: "thumbnail", maxCount: 1 },
+  ]),
   uploadFile
 );
 

@@ -10,13 +10,6 @@ const fileSchema = new mongoose.Schema(
       maxlength: [100, "Title cannot exceed 100 characters"],
     },
 
-    description: {
-      type: String,
-      trim: true,
-      maxlength: [500, "Description cannot exceed 500 characters"],
-      default: "",
-    },
-
     fileName: {
       type: String,
       required: [true, "File name is required"],
@@ -28,31 +21,37 @@ const fileSchema = new mongoose.Schema(
       required: [true, "File URL is required"],
     },
 
-    publicId: {
+    filePublicId: {
       type: String,
-      required: [true, "Cloudinary Public ID is required"],
+      required: [true, "File Public ID is required"],
+    },
+
+    // Thumbnail
+    thumbnailUrl: {
+      type: String,
+      required: [true, "Thumbnail is required"],
+    },
+
+    thumbnailPublicId: {
+      type: String,
+      required: [true, "Thumbnail Public ID is required"],
     },
 
     fileType: {
       type: String,
-      required: true,
       default: "application/pdf",
-      enum: {
-        values: ["application/pdf"],
-        message: "Only PDF files are allowed",
-      },
+      enum: ["application/pdf"],
     },
 
     fileSize: {
       type: Number,
       required: [true, "File size is required"],
-      min: [1, "File size must be greater than 0"],
     },
 
     uploadedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "Uploaded By is required"],
+      required: true,
     },
   },
   {
@@ -60,6 +59,4 @@ const fileSchema = new mongoose.Schema(
   }
 );
 
-const File = mongoose.model("File", fileSchema);
-
-export default File;
+export default mongoose.model("File", fileSchema);
